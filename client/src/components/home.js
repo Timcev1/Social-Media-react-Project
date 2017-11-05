@@ -28,7 +28,7 @@ import { Container, Header, Segment, Button, Dimmer, Loader, Divider } from 'sem
         })
       }
       getPost(id){
-        this.fetch(`api/drinks/${id}`)
+        this.fetch(`api/posts/${id}`)
         .then(post => this.setState({post: post}))
       }
       render() {
@@ -45,24 +45,12 @@ import { Container, Header, Segment, Button, Dimmer, Loader, Divider } from 'sem
               </p>
             </div>
           </Header>
-          <Button.Group fluid widths={posts.length}>
-            {Object.keys(posts).map((key) => {
-              return <Button active={post && post.id === posts[key].id} fluid key={key} onClick={() => this.getPost(posts[key].id)}>
-                {posts[key].title}
-              </Button>
-            })}
-          </Button.Group>
           <Divider hidden />
           {post &&
             <Container>
               <Header as='h2'>{post.title}</Header>
               {post.content && <p>{post.content}</p>}
-              {post.ingredients &&
-                <Segment.Group>
-                  {post.tags.map((tag, i) => <Segment key={i}>{tag.name}</Segment>)}
-                </Segment.Group>
-              }
-              {post.steps && <p>{post.steps}</p>}
+              {post.user_id.name}
             </Container>
           }
         </Container>
@@ -75,3 +63,10 @@ import { Container, Header, Segment, Button, Dimmer, Loader, Divider } from 'sem
     }
 
 export default Home;
+// <Button.Group fluid widths={posts.length}>
+//   {Object.keys(posts).map((key) => {
+//     return <Button active={post && post.id === posts[key].id} fluid key={key} onClick={() => this.getPost(posts[key].id)}>
+//       {posts[key].title}
+//     </Button>
+//   })}
+// </Button.Group>

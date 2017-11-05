@@ -2,7 +2,7 @@ import React, { Component} from 'react';
 import {connect} from 'react-redux';
 import {addPost} from './posts.js'
 
-export class PostForm extends Component {
+ class PostForm extends Component{
   constructor(props) {
     super(props)
     this.state ={
@@ -12,21 +12,20 @@ export class PostForm extends Component {
   }
 
   handleOnChange = event => {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
     this.setState({
-      [name]: value
+      value: event.target.value
     });
   }
 
   handleOnSubmit = event => {
-    this.props.addPost(this.state);
-    this.setState({
-      title: '',
-      content: ''
+    event.preventDefault();
+    this.props.store.dispatch({
+      type: 'ADD_POST',
+      title: this.state.title,
+      content: this.state.content
     });
-  }
+  };
+
   render(){
     return (
       <div className="container">
@@ -35,15 +34,15 @@ export class PostForm extends Component {
             <div className="panel panel-defualt">
               <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
                 <div className="form-group">
-                  <label htmlFor="title" className="col-md-4 control-label">Post</label>
+                  <label htmlFor="title" className="col-md-4 control-label">Post Title</label>
                   <div className="col-md-5">
-                  <textarea className="form-control" value={this.state.title} name="title" onChange={this.handleOnChange}/>
+                    <input className="form-control" value={this.state.title} name="title" onChange={this.handleOnChange}/>
                   </div>
                 </div>
                 <div className="form-group">
                   <label htmlFor="content" className="col-md-4 control-label">Content</label>
                   <div className="col-md-5">
-                    <input className="form-control" type="text" value={this.state.content} name="content" onChange={this.handleOnChange}/>
+                    <textarea className="form-control" type="text" value={this.state.content} name="content" onChange={this.handleOnChange}/>
                   </div>
                 </div>
                 <div className="form-group">
@@ -61,8 +60,7 @@ export class PostForm extends Component {
 }
 const mapStateToProps=(state)=>{
   return{
-    title: state.title,
-    content: state.content
+    todos: state.todos
   };
 }
 
@@ -72,4 +70,4 @@ const mapDispatchToProps=(dispatch)=>{
   }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostForm);
+export default PostForm;
