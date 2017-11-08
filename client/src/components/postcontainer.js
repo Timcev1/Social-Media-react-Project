@@ -1,4 +1,5 @@
 import React from 'react';
+import Post from '../containers/post'
 
 const Posts = () => {
     return (
@@ -7,7 +8,7 @@ const Posts = () => {
           <h1 className="App-title">Timber</h1>
         </header>
         <p className="Post-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          <post />
         </p>
       </div>
     );

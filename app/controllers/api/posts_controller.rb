@@ -1,5 +1,6 @@
 class Api::PostsController < ApplicationController
   before_action :post_finder, only: [:show, :edit, :destroy]
+
   def index
     render json: Post.all
   end
