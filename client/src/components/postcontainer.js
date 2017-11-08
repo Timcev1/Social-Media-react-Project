@@ -1,5 +1,4 @@
 import React from 'react';
-import Post from '../containers/post'
 
 const Posts = () => {
     return (

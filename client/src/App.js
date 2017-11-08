@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import {connect} from 'redux'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Posts from './components/postcontainer.js';
 import NavBar from './components/navbar.js';
 import Home from './components/home.js';
 import PostForm from './components/postform.js'
-import Post from './containers/post.js'
 import './App.css';
 
 class App extends Component {

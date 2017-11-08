@@ -13,7 +13,7 @@ const reducers = combineReducers({
   postFormData
 });
 
-const middleware = []
+const middleware = [thunk]
 
 export default createStore(
   reducers,

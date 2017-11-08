@@ -1,11 +1,21 @@
+import {resetpostForm} from './postform.js'
+
 const API_URL = "http://localhost:3000/api"
 
-export const setPosts = posts => {
+const setPosts = posts => {
   return {
     type: 'GET_POSTS_SUCCESS',
     posts
   }
 }
+
+const addPost = post => {
+  return {
+    type: 'CREATE_POST_SUCCESS',
+    post
+  }
+}
+
 
 export const getPosts = () => {
   return dispatch => {
@@ -26,7 +36,10 @@ export const createPost = post => {
       body: JSON.stringify({post: post})
     })
     .then(response => response.json)
-    .then(post => {debugger})
+    .then(post => {
+      dispatch(addPost(post))
+      dispatch(resetpostForm())
+    })
     .catch(error => console.log(error))
   }
 }

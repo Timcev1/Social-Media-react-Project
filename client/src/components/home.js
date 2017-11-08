@@ -1,5 +1,5 @@
 import React, { Component} from 'react';
-import { Container, Header, Segment, Button, Dimmer, Loader, Divider } from 'semantic-ui-react'
+import { Container, Header, Dimmer, Loader, Divider } from 'semantic-ui-react'
 
     class Home extends Component {
       constructor(){
