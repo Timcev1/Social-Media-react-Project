@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {getPosts} from '../actions/posts';
 
 class Posts extends Component {
   componentDidMount(){
-    
+    this.props.getPosts
   }
   render() {
     return (
@@ -24,4 +25,4 @@ const mapStateToProps = (state) =>{
     posts: state.posts
   })
 }
-export default connect(mapStateToProps)(Posts)
+export default connect(mapStateToProps, {getPosts})(Posts)

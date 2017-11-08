@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
+import {connect} from 'redux'
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 import Posts from './components/postcontainer.js';
@@ -11,11 +11,6 @@ import './App.css';
 
 class App extends Component {
 
-  componentDidMount() {
-    fetch('http://localhost:3000/api/posts')
-      .then(response => response.json)
-      .then(posts => this.setState({ posts }))
-  }
   render(){
     return(
       <div className="app">

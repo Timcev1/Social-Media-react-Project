@@ -30,7 +30,7 @@ export function createPost(props){
 export function deletePost(id){
   const request = axios.delete(`${APP_URL}/posts/${id}`);
   return {
-    type: GET_POST,
+    type: DELETE_POST,
     payload: request
   }
 }

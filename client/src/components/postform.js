@@ -1,64 +1,47 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
-import {addPost} from './posts.js';
-import {createPost} from '../actions/index';
 import {reduxform} from 'redux-form';
+import {updatePostFormData} from '../actions/postForm.js';
+import {createPost} from '../actions/posts.js';
 
  class PostForm extends Component{
-  constructor(props) {
-    super(props)
-    this.state ={
-      title: '',
-      content: ''
-    }
-  }
 
-  handleOnChange = event => {
-    this.setState({
-      value: event.target.value
-    });
-  }
+   handleOnChange = event => {
+     const { name, value } = event.target;
+     const currentPostFormData = Object.assign({}, this.props.postFormData, {
+       [name]: value
+     })
+     this.props.updatePostFormData(currentPostFormData)
+   }
 
-  handleOnSubmit = event => {
-    event.preventDefault();
-    this.props.store.dispatch({
-      type: 'ADD_POST',
-      title: this.state.title,
-      content: this.state.content
-    });
-  };
-
-  render(){
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-6 col-md-offset-4">
-            <div className="panel panel-defualt">
-              <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
-                <div className="form-group">
-                  <label htmlFor="title" className="col-md-4 control-label">Post Title</label>
-                  <div className="col-md-5">
-                    <input className="form-control" value={this.state.title} name="title" onChange={this.handleOnChange}/>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="content" className="col-md-4 control-label">Content</label>
-                  <div className="col-md-5">
-                    <textarea className="form-control" type="text" value={this.state.content} name="content" onChange={this.handleOnChange}/>
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="col-md-6 col-md-offset-4">
-                    <button type="submit" className="btn btn-default">Add a post</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+   handleOnSubmit = event => {
+     event.preventDefault()
+     this.props.createPost(this.props.postFormData)
+   }
+   render(){
+     const { title, content} = this.props.postFormData;
+     return (
+       <div>
+        <h3> Add a post</h3>
+        <form onSubmit={this.handleOnSubmit}>
+          <div>
+            <label htmlFor="title">Title of Post: </label>
+            <input type="text" name="title" value={title} onChange={this.handleOnChange}/>
           </div>
-        </div>
+          <div>
+            <label htmlFor="Content">Content: </label>
+            <input type="text" name="content" value={content} onChange={this.handleOnChange}/>
+          </div>
+          <button type="submit">Post post</button>
+        </form>
       </div>
-    )
-  }
-}
+      )
+   }
+ }
 
-export default PostForm
+ const mapStateToProps = state => {
+   return {
+     postFormData: state.postFormData
+   }
+ }
+export default connect(mapStateToProps, {updatePostFormData, createPost})(PostForm);
