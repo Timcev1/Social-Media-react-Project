@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
-import {addPost} from './posts.js'
+import {addPost} from './posts.js';
+import {createPost} from '../actions/index';
+import {reduxform} from 'redux-form';
 
  class PostForm extends Component{
   constructor(props) {
@@ -58,16 +60,5 @@ import {addPost} from './posts.js'
     )
   }
 }
-const mapStateToProps=(state)=>{
-  return{
-    todos: state.todos
-  };
-}
 
-const mapDispatchToProps=(dispatch)=>{
-  return ({
-    addPost: addPost
-  }, dispatch);
-}
-
-export default PostForm;
+export default PostForm

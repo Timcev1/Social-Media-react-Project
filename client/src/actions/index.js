@@ -19,7 +19,7 @@ export function getPost(id){
   }
 }
 
-export function createArticle(props){
+export function createPost(props){
   const request = axios.post(`${APP_URL}/posts`, props);
   return{
     type: CREATE_POST,
