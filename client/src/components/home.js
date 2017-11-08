@@ -1,10 +1,11 @@
 import React, { Component} from 'react';
-import Posts from './posts.js'
+
 
     const Home = () => {
       return(
           <div>
-            <Posts />
+            <h3>Welcome to Timber</h3>
+              <p> Here you can post whatever tag your post to help catergorize it and make it a platform of opinions</p>
           </div>
         )
     }

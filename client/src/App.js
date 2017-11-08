@@ -6,7 +6,7 @@ import NavBar from './components/navbar.js';
 import Home from './components/home.js';
 import PostForm from './components/postform.js'
 import './App.css';
-import Header from './components/header.js'
+import Head from './components/head.js'
 
 class App extends Component {
   constructor(props){
@@ -20,7 +20,7 @@ class App extends Component {
   render(){
     return(
       <div className="app">
-        <Header />
+      <Head />
       <Router>
         <div className="router">
           <NavBar />
@@ -30,7 +30,6 @@ class App extends Component {
      </Router>
      <div className="container-fluid">
       <div className="row title justify-content-center" style={{paddingtop: '12px'}}>
-          <PostForm />
       </div>
     </div>
     </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Post = (props) => (
-  
-  <div>
+
+  <div className="postcard">
     <h1> Post Component </h1>
     {props.posts.map(post =>
       <div key={post.id} className="postcontainer">

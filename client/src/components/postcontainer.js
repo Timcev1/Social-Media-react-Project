@@ -1,16 +1,16 @@
 import React from 'react';
+import Posts from './posts.js'
+import PostForm from './postform.js'
 
-const Posts = () => {
+const PostCotainer = () => {
     return (
-      <div className="Post">
-        <header className="App-header">
-          <h1 className="App-title">Timber</h1>
-        </header>
-        <p className="Post-intro">
-          <post />
-        </p>
+      <div className="">
+        <Posts />
+        <div>
+          <PostForm />
+        </div>
       </div>
     );
 }
 
-export default Posts;
+export default PostCotainer;

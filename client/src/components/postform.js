@@ -21,7 +21,7 @@ import {createPost} from '../actions/posts.js';
    render(){
      const { title, content} = this.props.postFormData;
      return (
-       <div>
+       <div className="postform">
         <h3> Add a post</h3>
         <form onSubmit={this.handleOnSubmit}>
           <div>
