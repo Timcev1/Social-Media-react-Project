@@ -1,4 +1,5 @@
 class Api::PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :post_finder, only: [:show, :edit, :destroy]
 
   def index

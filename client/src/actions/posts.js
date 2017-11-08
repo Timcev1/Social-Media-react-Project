@@ -21,7 +21,7 @@ export const getPosts = () => {
   return dispatch => {
     return fetch(`${API_URL}/posts`)
       .then(response => response.json())
-      .then(posts => dispatch(setPosts))
+      .then(posts => dispatch(setPosts(posts)))
       .catch(error => console.log(error))
     }
   }
@@ -35,7 +35,7 @@ export const createPost = post => {
       },
       body: JSON.stringify({post: post})
     })
-    .then(response => response.json)
+    .then(response => response.json())
     .then(post => {
       dispatch(addPost(post))
       dispatch(resetpostForm())

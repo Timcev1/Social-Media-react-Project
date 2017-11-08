@@ -6,12 +6,21 @@ import NavBar from './components/navbar.js';
 import Home from './components/home.js';
 import PostForm from './components/postform.js'
 import './App.css';
+import Header from './components/header.js'
 
 class App extends Component {
+  constructor(props){
+    super(props)
+
+    this.state = {
+      posts: []
+    }
+  }
 
   render(){
     return(
       <div className="app">
+        <Header />
       <Router>
         <div className="router">
           <NavBar />
@@ -21,7 +30,6 @@ class App extends Component {
      </Router>
      <div className="container-fluid">
       <div className="row title justify-content-center" style={{paddingtop: '12px'}}>
-        <h1> Post Maker</h1>
           <PostForm />
       </div>
     </div>
