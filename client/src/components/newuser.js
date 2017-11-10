@@ -32,7 +32,7 @@ import {createUser} from '../actions/users';
             <label htmlFor="Content">Password: </label>
             <input type="text" name="password" value={password} onChange={this.handleOnChange}/>
           </div>
-          <button type="submit">Post</button>
+          <button type="submit">Log In</button>
         </form>
       </div>
       )

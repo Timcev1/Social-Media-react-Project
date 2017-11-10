@@ -5,7 +5,7 @@ import {handleLogin, handleLogout} from '../actions/users'
 
   render() {
     let button;
-    if(this.props.state.status === 'logged in'){
+    if(this.props.status === 'logged in'){
       button = <button onClick={this.handleLogout}>Log out</button>
     }else {
       button = <input type="button" value="Login" onClick={this.handleLogin}/>
@@ -14,7 +14,7 @@ import {handleLogin, handleLogout} from '../actions/users'
       <div>
       <input type="text" ref="username"/>
         {button}
-      <p> Current state is {this.props.state.status + ' as ' + this.props.state.value}</p>
+      <p> Current state is {this.props.username + ' as ' + this.props.value}</p>
       </div>
     );
   }

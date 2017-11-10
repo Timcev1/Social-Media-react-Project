@@ -13,11 +13,14 @@ class App extends Component {
     super(props)
 
     this.state = {
-      posts: []
+      posts: [],
+      username: 'guest'
     }
   }
 
   render(){
+    let user = this.state.username
+
     return(
       <div className="app">
       <Head />
@@ -30,6 +33,7 @@ class App extends Component {
      </Router>
      <div className="container-fluid">
       <div className="row title justify-content-center" style={{paddingtop: '12px'}}>
+          <p>Hello, {this.state.username}!</p>
       </div>
     </div>
     </div>
