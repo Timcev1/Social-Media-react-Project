@@ -4,3 +4,6 @@ export const CREATE_POST = "CREATE_POST";
 export const DELETE_POST = "DELETE_POST";
 export const LOGOUT = "LOGOUT";
 export const LOGIN = "LOGIN"
+export const SET_LOGIN_PENDING = 'SET_LOGIN_PENDING';
+export const SET_LOGIN_SUCCESS = 'SET_LOGIN_SUCCESS';
+export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';

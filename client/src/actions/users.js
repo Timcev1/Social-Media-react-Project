@@ -24,9 +24,10 @@ export const getUsers = () => {
       .catch(error => console.log(error))
     }
   }
+
 export const matchUser = () => {
   return dispatch => {
-    return fetch()
+    return fetch(`${API_URL}/users`)
   }
 }
 

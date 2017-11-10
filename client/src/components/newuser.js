@@ -1,10 +1,14 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
-import {reduxform} from 'redux-form';
 import {updateUserFormData} from '../actions/userform';
 import {createUser} from '../actions/users';
 
  class UserForm extends Component{
+
+   constructor(props) {
+     super(props);
+     this.state = {};
+   }
 
    handleOnChange = event => {
      const { name, value } = event.target;
@@ -16,6 +20,9 @@ import {createUser} from '../actions/users';
 
    handleOnSubmit = event => {
      event.preventDefault()
+     if (this.props.getUsers(this.props.userFormData)) {
+
+     }
      this.props.createUser(this.props.userFormData)
    }
    render(){
@@ -26,11 +33,11 @@ import {createUser} from '../actions/users';
         <form onSubmit={this.handleOnSubmit}>
           <div>
             <label htmlFor="title">Username: </label>
-            <input type="text" name="username" value={username} onChange={this.handleOnChange}/>
+            <input type="text" name="username" value={username} onChange={this.handleOnChange} placeholder=" Username "/>
           </div>
           <div>
             <label htmlFor="Content">Password: </label>
-            <input type="text" name="password" value={password} onChange={this.handleOnChange}/>
+            <input type="text" name="password" value={password} onChange={this.handleOnChange} placeholder=" password "/>
           </div>
           <button type="submit">Log In</button>
         </form>
@@ -44,4 +51,5 @@ import {createUser} from '../actions/users';
      userFormData: state.userFormData
    }
  }
+
 export default connect(mapStateToProps, {updateUserFormData, createUser})(UserForm);

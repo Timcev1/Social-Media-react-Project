@@ -4,9 +4,9 @@ import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Posts from './containers/postcontainer.js';
 import NavBar from './components/navbar.js';
 import Home from './components/home.js';
-import PostForm from './components/postform.js'
 import './App.css';
-import Head from './components/head.js'
+import Head from './components/head.js';
+import allUsers from './components/allusers';
 
 class App extends Component {
   constructor(props){
@@ -14,12 +14,11 @@ class App extends Component {
 
     this.state = {
       posts: [],
-      username: 'guest'
+      users: []
     }
   }
 
   render(){
-    let user = this.state.username
 
     return(
       <div className="app">
@@ -27,13 +26,13 @@ class App extends Component {
       <Router>
         <div className="router">
           <NavBar />
-          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/posts" component={Posts} />
+          <Route exact path="/users" component={allUsers} />
         </div>
      </Router>
      <div className="container-fluid">
       <div className="row title justify-content-center" style={{paddingtop: '12px'}}>
-          <p>Hello, {this.state.username}!</p>
       </div>
     </div>
     </div>

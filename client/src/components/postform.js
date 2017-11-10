@@ -1,6 +1,5 @@
 import React, { Component} from 'react';
 import {connect} from 'react-redux';
-import {reduxform} from 'redux-form';
 import {updatePostFormData} from '../actions/postform.js';
 import {createPost} from '../actions/posts.js';
 
