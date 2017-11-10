@@ -1,15 +1,29 @@
-export const handleLogin = () =>{
-  let username = this.refs.username.value;
-  return({
-    type: 'LOGIN',
-    value: username
-  });
+import {resetuserForm} from './userform.js'
+
+const API_URL = "http://localhost:3000/api"
+
+
+const addUser = user => {
+  return {
+    type: 'CREATE_USER_SUCCESS',
+    user
+  }
 }
 
-export const handleLogout = () => {
-  return({
-    type: 'LOGOUT',
-    value: 'guest'
-  });
-  this.refs.username.value = '';
+export const createUser = user => {
+  return dispatch => {
+    return fetch(`${API_URL}/users`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({user: user})
+    })
+    .then(response => response.json())
+    .then(user => {
+      dispatch(addUser(user))
+      dispatch(resetuserForm())
+    })
+    .catch(error => console.log(error))
+  }
 }
