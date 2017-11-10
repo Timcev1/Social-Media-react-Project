@@ -32,7 +32,7 @@ import {createPost} from '../actions/posts.js';
             <label htmlFor="Content">Content: </label>
             <input type="text" name="content" value={content} onChange={this.handleOnChange}/>
           </div>
-          <button type="submit">Post post</button>
+          <button type="submit">Post</button>
         </form>
       </div>
       )
