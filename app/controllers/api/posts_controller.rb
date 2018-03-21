@@ -3,7 +3,9 @@ class Api::PostsController < ApplicationController
   before_action :post_finder, only: [:show, :edit, :destroy]
 
   def index
-    render json: Post.all
+    @posts = Post.paginate(:page => page, :per_page => per_page)
+    @pages = totalPages
+    return render json: @posts
   end
 
   def create
@@ -36,9 +38,22 @@ class Api::PostsController < ApplicationController
   end
 
   private
+    def totalPages
+      totalPosts = Post.all.length
+      dividedPosts = totalPosts.to_i / 3
+      return (dividedPosts.to_f).ceil
+    end
+
+    def per_page
+      per_page = 3
+    end
+
+    def page
+      params[:page] || 1
+    end
 
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :page, :per_page)
     end
     def post_finder
       @post = Post.find(params[:id])

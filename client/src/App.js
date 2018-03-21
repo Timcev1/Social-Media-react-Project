@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-
+import { browserHistory } from "react-router";
 import Posts from './containers/postcontainer.js';
 import NavBar from './components/navbar.js';
 import Home from './components/home.js';

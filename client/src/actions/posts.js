@@ -17,14 +17,15 @@ const addPost = post => {
 }
 
 
-export const getPosts = () => {
+export function getPosts(page) {
   return dispatch => {
-    return fetch(`${API_URL}/posts`)
+    return fetch(`${API_URL}/posts?${page}`)
       .then(response => response.json())
       .then(posts => dispatch(setPosts(posts)))
       .catch(error => console.log(error))
     }
   }
+
 
 export const createPost = post => {
   return dispatch => {

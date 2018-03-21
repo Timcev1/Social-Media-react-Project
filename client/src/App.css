@@ -58,7 +58,7 @@
   background: 	#fff5ee	;
   clear: both;
   text-align: center;
-  float: left;
+  float: center;
   width: 220px;
   height: 200px;
   margin: 10px;
@@ -87,4 +87,11 @@
 .userform {
   float: left;
   text-align: center;
+}
+
+.post-page-numbers {
+  list-style-type: none;
+  display: inline-block;
+  color: black;
+  padding: 8px 16px;
 }
