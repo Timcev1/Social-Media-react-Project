@@ -8,6 +8,12 @@ const setPosts = posts => {
     posts
   }
 }
+const setPages = pages => {
+  return {
+    type: 'GET_PAGES_SUCCESS',
+    pages
+  }
+}
 
 const addPost = post => {
   return {
@@ -19,9 +25,10 @@ const addPost = post => {
 
 export function getPosts(page) {
   return dispatch => {
-    return fetch(`${API_URL}/posts?${page}`)
+    return fetch(`${API_URL}/posts?page=${page}`)
       .then(response => response.json())
       .then(posts => dispatch(setPosts(posts)))
+      .then(pages => dispatch(setPages(pages)))
       .catch(error => console.log(error))
     }
   }

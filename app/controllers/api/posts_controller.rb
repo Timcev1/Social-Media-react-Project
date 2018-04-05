@@ -4,8 +4,11 @@ class Api::PostsController < ApplicationController
 
   def index
     @posts = Post.paginate(:page => page, :per_page => per_page)
-    @pages = totalPages
-    return render json: @posts
+    @pages = Post.totalPages
+    return render json: {
+      posts: @posts,
+      pages: @pages
+    }
   end
 
   def create
@@ -36,14 +39,7 @@ class Api::PostsController < ApplicationController
       render json: { message: "unable to remove this post"}, status: 400
     end
   end
-
   private
-    def totalPages
-      totalPosts = Post.all.length
-      dividedPosts = totalPosts.to_i / 3
-      return (dividedPosts.to_f).ceil
-    end
-
     def per_page
       per_page = 3
     end

@@ -6,11 +6,9 @@ import { push } from "react-router-redux";
 import { Pagination } from "react-bootstrap";
 
 class Posts extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      current_page: 1,
-      per_page: 3,
       page: 1
       };
     this.handleClick = this.handleClick.bind(this);
@@ -21,21 +19,28 @@ class Posts extends Component {
   }
 
   render() {
-    const {posts, page} = this.props;
-    const {per_page,current_page} = this.state
-    const indexOfLastPost = current_page * per_page;
-    const indexOfFirstPost = indexOfLastPost - per_page;
-    const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-    const renderPosts = currentPosts.map((post, index) => {
-      return( <PostCard key={index} post={post} />
-    )});
+    const posts = this.props.posts.posts
+    const pages = this.props.posts.pages
+    function renderedposts(posts) {
+      if (posts === undefined){
+        return <div>Loading.... </div>
+      }else{
+        return(
+            <div>
+                {posts.map(post => <PostCard key={post.id} post={post} />)}
+            </div>
+        )};
+      }
+    const renderPosts = renderedposts(this.props.posts.posts)
     const pageNumbers = []
-    for( let i = 1; i <= Math.ceil(posts.length / per_page); i++){
+    for( let i = 1; i <= pages; i++){
       pageNumbers.push(i);
     }
     const renderPageNumbers = pageNumbers.map(number => {
       return (
-        <li key={number} id={number} onClick={this.handleClick}>{number}</li>
+        <li key={'page' + number} className={number}>
+          <a onClick={()=> {this.handleClick(number)}}>{number}</a>
+        </li>
       );
     });
 
@@ -51,8 +56,8 @@ class Posts extends Component {
     );
   }
 
-  handleClick(event) {
-    this.props.getPosts(event.target.id)
+  handleClick(number) {
+    this.props.getPosts(number)
   }
 };
 
