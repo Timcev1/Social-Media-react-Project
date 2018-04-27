@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   validates :content, :title, presence: true
   validates :title, uniqueness: true
+  has_one :like
 
   def self.per_page
     3

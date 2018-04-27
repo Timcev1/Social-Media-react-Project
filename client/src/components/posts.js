@@ -19,7 +19,7 @@ class Posts extends Component {
   }
 
   render() {
-    const posts = this.props.posts.posts
+    const posts = this.props.posts.list
     const pages = this.props.posts.pages
     function renderedposts(posts) {
       if (posts === undefined){

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
   namespace :api do
     resources :tags
     resources :posts

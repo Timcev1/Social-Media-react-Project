@@ -34,6 +34,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'foreman', '~> 0.82.0'
 gem 'bootstrap'
 gem 'pry'
+gem 'wdm'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
